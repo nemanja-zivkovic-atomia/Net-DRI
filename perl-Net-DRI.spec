@@ -75,7 +75,7 @@ find eg/ -type f -exec %{__chmod} a-x {} \;
 %{perl_vendorlib}/Net/DRI.pm
 
 %changelog
-* Tue Okt 27 2020 Jovana Stamenkovic <jovana.stamenkovic@atomia.com> - 0.96-69atomia
+* Tue Oct 27 2020 Jovana Stamenkovic <jovana.stamenkovic@atomia.com> - 0.96-69atomia
 - Update to version 0.96-69atomia.
 
 * Fri Jun 12 2020 Stevan Kostic <stevan.kostic@atomia.com> - 0.96-68atomia
