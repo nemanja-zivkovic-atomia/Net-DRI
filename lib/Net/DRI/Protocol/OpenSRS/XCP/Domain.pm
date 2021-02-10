@@ -71,17 +71,18 @@ sub register_commands
 {
  my ($class,$version)=@_;
  my %tmp=(
-	  info  => [\&info,  \&info_parse ],
+          info  => [\&info,  \&info_parse ],
           check => [\&check, \&check_parse ],
           create => [ \&create, \&create_parse ], ## TODO : parsing of return messages
           delete => [ \&delete, \&delete_parse ],
-	  renew => [ \&renew, \&renew_parse ],
+          renew => [ \&renew, \&renew_parse ],
           transfer_request => [ \&transfer_request, \&transfer_request_parse ],
           transfer_query => [ \&transfer_query, \&transfer_query_parse ],
           transfer_cancel => [ \&transfer_cancel, \&transfer_cancel_parse ],
           update => [ \&update ],
           send_authcode => [ \&send_authcode ],
           name_suggest => [ \&name_suggest, \&name_suggest_parse ],
+          get_authcode => [ \&get_authcode ],
          );
 
  return { 'domain' => \%tmp };
@@ -654,6 +655,15 @@ sub send_authcode
  my %r=(action=>'send_authcode',object=>'domain');
  $msg->command(\%r);
  $msg->command_attributes({domain_name => $domain});
+}
+
+sub get_authcode
+{
+  my ($xcp,$domain,$rd)=@_;
+  my $msg=$xcp->message();
+  my %r=(action=>'get',object=>'domain', domain => $domain);
+  $msg->command(\%r);
+  $msg->command_attributes({type => "domain_auth_info"});
 }
 
 sub name_suggest

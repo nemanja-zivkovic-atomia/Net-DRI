@@ -245,5 +245,12 @@ sub host_delete
  return $rc;
 }
 
+sub domain_get_authcode
+{
+ my ($self,$ndr,$domain)=@_;
+ my $rc=$ndr->process('domain','get_authcode',[$domain]);
+ return $rc;
+}
+
 ####################################################################################################
 1;
