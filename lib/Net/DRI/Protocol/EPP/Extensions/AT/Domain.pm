@@ -152,7 +152,7 @@ sub extonly {
                        [
                                ['transfer',
 
-                                       { 'op' => 'execute' },
+                                       { 'op' => 'request' },
                                        [ 'domain:transfer', \%domns, [ 'domain:name', $domain ]
                                        ]
                                ],
