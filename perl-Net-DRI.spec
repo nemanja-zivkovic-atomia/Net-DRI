@@ -75,6 +75,9 @@ find eg/ -type f -exec %{__chmod} a-x {} \;
 %{perl_vendorlib}/Net/DRI.pm
 
 %changelog
+* Fri Mar 12 2021 Jovana Stamenkovic <jovana.stamenkovic@atomia.com> - 0.96-71atomia
+- Fix transfer of .at domains. 
+
 * Wed Feb 10 2021 Jovana Stamenkovic <jovana.stamenkovic@atomia.com> - 0.96-70atomia
 - Get authcode directly from opensrs.
 
