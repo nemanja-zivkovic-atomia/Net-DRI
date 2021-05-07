@@ -252,5 +252,12 @@ sub domain_get_authcode
  return $rc;
 }
 
+sub domain_get_dnssec_info
+{
+ my ($self,$ndr,$domain)=@_;
+ my $rc=$ndr->process('domain','get_dnssec_info',[$domain]);
+ return $rc;
+}
+
 ####################################################################################################
 1;
