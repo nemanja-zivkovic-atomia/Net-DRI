@@ -83,6 +83,7 @@ sub register_commands
           send_authcode => [ \&send_authcode ],
           name_suggest => [ \&name_suggest, \&name_suggest_parse ],
           get_authcode => [ \&get_authcode ],
+          get_dnssec_info =>  [ \&get_dnssec_info ],
          );
 
  return { 'domain' => \%tmp };
@@ -311,6 +312,8 @@ sub update
  my $setrenewal = undef;
  $setrenewal = $todo->set('auto_renew') if defined($todo->set('auto_renew'));
 
+ my $dnssecadd=$todo->add('secdns');
+
  if (defined($nsset))
  {
   Net::DRI::Exception::usererr_invalid_parameters('ns changes for set must be a Net::DRI::Data::Hosts object') unless Net::DRI::Util::isa_hosts($nsset);
@@ -378,9 +381,27 @@ sub update
   $attr->{auto_renew} = $setrenewal;
   $attr->{let_expire} = 0;
  }
+ elsif(defined($dnssecadd))
+ {
+  build_msg_cookie($msg,'modify',$rd->{cookie},$rd->{registrant_ip});
+  my @dnsseclist = ();
+
+  $attr->{data} = "dnssec";
+
+  my $idx = 0;
+
+  while(defined($dnssecadd->[$idx]))
+  {
+    push @dnsseclist, { algorithm => $dnssecadd->[$idx]->{'alg'}, digest_type => $dnssecadd->[$idx]->{'digestType'}, digest => $dnssecadd->[$idx]->{'digest'}, key_tag => $dnssecadd->[$idx]->{'keyTag'}};
+    $idx = $idx + 1;
+  }
+
+  $attr->{dnssec} = \@dnsseclist;
+
+ }
  else
  {
-  Net::DRI::Exception::usererr_invalid_parameters('only change of nameservers, contacts, lock state, whois protection and auto renewal is supported');
+  Net::DRI::Exception::usererr_invalid_parameters('only change of nameservers, contacts, dnssec, lock state, whois protection and auto renewal is supported');
  }
 }
 
@@ -664,6 +685,15 @@ sub get_authcode
   my %r=(action=>'get',object=>'domain', domain => $domain);
   $msg->command(\%r);
   $msg->command_attributes({type => "domain_auth_info"});
+}
+
+sub get_dnssec_info
+{
+  my ($xcp,$domain,$rd)=@_;
+  my $msg=$xcp->message();
+  my %r=(action=>'get',object=>'domain', domain => $domain);
+  $msg->command(\%r);
+  $msg->command_attributes({type => "dnssec"});
 }
 
 sub name_suggest

@@ -1,5 +1,5 @@
 libnet-dri-perl (0.96-71atomia) unstable; urgency=low
-  * Fix transfer of .at domains.
+  * Add support for DNSSEC in OpenSRS plugin.
   * Get authcode directly from opensrs.
   * Activate TLS1.2 on SWITCH plugin
   * Update domain-ext to 2.4 for EUrid.
