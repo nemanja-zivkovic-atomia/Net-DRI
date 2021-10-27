@@ -84,6 +84,8 @@ sub register_commands
           name_suggest => [ \&name_suggest, \&name_suggest_parse ],
           get_authcode => [ \&get_authcode ],
           get_dnssec_info =>  [ \&get_dnssec_info ],
+          modify_trade_lock => [\&modify_trade_lock ],
+          get_trade_lock => [\&get_trade_lock],
          );
 
  return { 'domain' => \%tmp };
@@ -720,6 +722,23 @@ sub name_suggest_parse
  foreach (qw/lookup suggestion premium personal_names/) {
   $rinfo->{domain}->{$oname}->{$_} = $ra->{$_} if exists $ra->{$_};
  }
+sub modify_trade_lock
+{
+  my ($xcp,$domain,$rd)=@_;
+  my $msg=$xcp->message();
+  my %r=(action=>'modify_trade_lock_setting',object=>'domain');
+  $msg->command(\%r);
+  $msg->command_attributes({domain => $domain, enable => $rd->{"enable"}, ip_address=> "0.0.0.0"});
+}
+
+sub get_trade_lock
+{
+  my ($xcp,$domain,$rd)=@_;
+  my $msg=$xcp->message();
+  my %r=(action=>'get_trade_lock_setting',object=>'domain');
+  $msg->command(\%r);
+  $msg->command_attributes({domain => $domain});
+}
 }
 
 ####################################################################################################

@@ -259,5 +259,19 @@ sub domain_get_dnssec_info
  return $rc;
 }
 
+sub domain_modify_trade_lock
+{
+ my ($self,$ndr,$domain,$rd)=@_;
+ my $rc=$ndr->process('domain','modify_trade_lock',[$domain,$rd]);
+ return $rc;
+}
+
+sub domain_get_trade_lock
+{
+ my ($self,$ndr,$domain)=@_;
+ my $rc=$ndr->process('domain','get_trade_lock',[$domain]);
+ return $rc;
+}
+
 ####################################################################################################
 1;
