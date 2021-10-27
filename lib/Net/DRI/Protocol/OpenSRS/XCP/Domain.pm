@@ -531,6 +531,11 @@ sub renew
  $handle = $rd->{handle} if Net::DRI::Util::has_key($rd, 'handle');
  my $attr = {domain => $domain, period => $rd->{duration}->years(), currentexpirationyear => $rd->{current_expiration}->year(), handle => $handle};
 
+ if (defined($rd->{premium_price_to_verify}))
+ {
+   $attr->{"premium_price_to_verify"} = $rd->{premium_price_to_verify};
+ }
+
  # These are all the OpenSRS names for optional parameters.  Might need to map generic names to OpenSRS namespace later.
  foreach (qw/auto_renew f_parkp/) {
   $attr->{$_} = ($rd->{$_} ? 1 : 0 ) if Net::DRI::Util::has_key($rd, $_);
