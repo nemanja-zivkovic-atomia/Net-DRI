@@ -1,4 +1,6 @@
-libnet-dri-perl (0.96-72atomia) unstable; urgency=low
+libnet-dri-perl (0.96-73atomia) unstable; urgency=low
+  * Implement trade lock for OpenSRS.
+  * Fix renewal of premium domains on OpenSRS.
   * Fix transfer of .at domains.
   * Add support for DNSSEC in OpenSRS plugin.
   * Get authcode directly from opensrs.

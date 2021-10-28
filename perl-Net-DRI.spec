@@ -10,7 +10,7 @@
 Summary: Interface to Domain Name Registries/Registrars/Resellers
 Name: perl-Net-DRI
 Version: 0.96
-Release: 72atomia
+Release: 73atomia
 License: Artistic/GPL
 Group: Applications/CPAN
 URL: http://search.cpan.org/dist/Net-DRI/
@@ -75,6 +75,9 @@ find eg/ -type f -exec %{__chmod} a-x {} \;
 %{perl_vendorlib}/Net/DRI.pm
 
 %changelog
+* Thu Oct 28 2021 Jovana Stamenkovic <jovana.stamenkovic@atomia.com> - 0.96-73atomia
+- Implement trade lock and fix renewal of premium domains on OpenSRS.
+
 * Tue Jun 29 2021 Jovana Stamenkovic <jovana.stamenkovic@atomia.com> - 0.96-72atomia
 - Fix transfer of .at domains. 
 
