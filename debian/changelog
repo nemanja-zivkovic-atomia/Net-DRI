@@ -1,4 +1,5 @@
 libnet-dri-perl (0.96-73atomia) unstable; urgency=low
+  * Activate TLS1.2 on IIS plugin
   * Implement trade lock for OpenSRS.
   * Fix renewal of premium domains on OpenSRS.
   * Fix transfer of .at domains.
