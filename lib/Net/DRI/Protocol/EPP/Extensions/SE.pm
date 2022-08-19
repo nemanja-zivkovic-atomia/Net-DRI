@@ -79,7 +79,7 @@ sub setup
     return;
 }
 
-sub default_extensions { return qw/SE::Extensions SecDNS/; }
+sub default_extensions { return qw/SE::Extensions SecDNS11/; }
 
 ####################################################################################################
 1;
