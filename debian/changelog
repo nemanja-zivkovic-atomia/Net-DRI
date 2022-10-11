@@ -1,4 +1,5 @@
-libnet-dri-perl (0.96-75atomia) unstable; urgency=low
+libnet-dri-perl (0.96-756tomia) unstable; urgency=low
+  * Add support for Ubuntu 20.04
   * Enabled DNSSEC 1.1 in .SE plugin
   * Activate TLS1.2 on IIS plugin
   * Implement trade lock for OpenSRS.
