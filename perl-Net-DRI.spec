@@ -10,7 +10,7 @@
 Summary: Interface to Domain Name Registries/Registrars/Resellers
 Name: perl-Net-DRI
 Version: 0.96
-Release: 76atomia
+Release: 77atomia
 License: Artistic/GPL
 Group: Applications/CPAN
 URL: http://search.cpan.org/dist/Net-DRI/
@@ -75,6 +75,9 @@ find eg/ -type f -exec %{__chmod} a-x {} \;
 %{perl_vendorlib}/Net/DRI.pm
 
 %changelog
+* Fri Nov 25 2022 Nemanja Zivkovic <nemanja.zivkovic@atomia.com> - 0.96-77atomia
+- Updated domain-ext to 2.5 for EUrid.
+
 * Tue Oct 11 2022 Nemanja Zivkovic <nemanja.zivkovic@atomia.com> - 0.96-76atomia
 - Added support for Ubuntu 20.04
 
