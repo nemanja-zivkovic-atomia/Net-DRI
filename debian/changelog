@@ -1,4 +1,5 @@
-libnet-dri-perl (0.96-76atomia) unstable; urgency=low
+libnet-dri-perl (0.96-77atomia) unstable; urgency=low
+  * Update domain-ext to 2.5 for EUrid.
   * Add support for Ubuntu 20.04
   * Enabled DNSSEC 1.1 in .SE plugin
   * Activate TLS1.2 on IIS plugin
